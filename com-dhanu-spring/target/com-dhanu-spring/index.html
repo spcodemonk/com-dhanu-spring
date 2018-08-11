@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dhanu Spring MVC Project</title>
+<script src="./js/angular.min.js"></script>
+
+<!-- <script src="angular.min.js"></script> -->
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope, $http) {
+		$http({
+			method : "GET",
+			url : "firstCntrl/showName.do"
+		}).then(function mySuccess(response) {
+			$scope.myWelcome = "Sharad";
+		}, function myError(response) {
+			$scope.myWelcome = "404 - sharad resource not found";
+		});
+	});
+</script>
+</head>
+<body>
+
+	<div ng-app="myApp" ng-controller="myCtrl">
+
+		<p>Today's welcome message is:</p>
+		<h1>{{myWelcome}}</h1>
+
+	</div>
+
+</body>
+</html>
